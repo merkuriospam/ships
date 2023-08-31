@@ -12,6 +12,7 @@ import warnings
 import os
 warnings.filterwarnings('ignore')
 
+totalEpochs=5 # 50 original
 train_df=pd.read_csv('./train/train.csv')
 print(train_df.head())
 print(train_df.shape)
@@ -95,8 +96,7 @@ model.add(layers.Dense(5, activation='softmax'))
 model.summary()
 
 model.compile(loss='sparse_categorical_crossentropy', optimizer=tf.keras.optimizers.Adam(), metrics=['accuracy'])
-# model.fit(train_x, train_y, epochs=50, batch_size=128, shuffle=True)
-model.fit(train_x, train_y, epochs=2, batch_size=128, shuffle=True)
+model.fit(train_x, train_y, epochs=totalEpochs, batch_size=128, shuffle=True)
 model.evaluate(test_x,test_y)
 
 input_shape = (128, 128, 3)
@@ -121,8 +121,7 @@ transfer_model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate=0.0001
              metrics = ['accuracy'],
              loss='sparse_categorical_crossentropy')
 
-# transfer_model.fit(train_x, train_y,validation_steps=50, verbose=1, epochs=50, callbacks=[callback])
-transfer_model.fit(train_x, train_y,validation_steps=50, verbose=1, epochs=2, callbacks=[callback])
+transfer_model.fit(train_x, train_y,validation_steps=50, verbose=1, epochs=totalEpochs, callbacks=[callback])
 transfer_model.evaluate(test_x,test_y)
 
 test_df = pd.read_csv("./test_ApKoW4T.csv")
