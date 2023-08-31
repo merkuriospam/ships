@@ -1,5 +1,5 @@
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import tensorflow as tf
@@ -11,9 +11,6 @@ from tensorflow.keras.applications.inception_v3 import InceptionV3
 import warnings
 import os
 warnings.filterwarnings('ignore')
-
-# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using "Save & Run All" 
-# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
 
 train_df=pd.read_csv('./train/train.csv')
 print(train_df.head())
@@ -68,7 +65,6 @@ for i in range (0,20):
     plt.title('class = {x}, Ship is {y}'.format(x=train_df["category"][i],y=dictclass[train_df["category"][i]]))
     plt.axis('Off')
     plt.grid(False)
-
 # plt.show()
 
 data_augmentation = tf.keras.Sequential([
