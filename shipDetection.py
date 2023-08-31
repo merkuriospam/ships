@@ -12,7 +12,7 @@ import warnings
 import os
 warnings.filterwarnings('ignore')
 
-totalEpochs=5 # 50 original
+totalEpochs=10 # 50 original
 train_df=pd.read_csv('./train/train.csv')
 print(train_df.head())
 print(train_df.shape)
